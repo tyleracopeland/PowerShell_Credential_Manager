@@ -23,9 +23,8 @@ namespace PSCredentialManager.Api
 
         public Credential ReadCred(string target, CredType type)
         {
-            IntPtr nativeCredentialPointer;
 
-            bool read = Imports.CredRead(target, type, 0, out nativeCredentialPointer);
+            bool read = Imports.CredRead(target, type, 0, out IntPtr nativeCredentialPointer);
             int lastError = Marshal.GetLastWin32Error();
             if (read)
             {
